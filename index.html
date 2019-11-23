@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A business card created using the web.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@">
+<meta name="twitter:site" content="@">
+<meta property="og:url" content="https://oshinko.github.io/bizcard/">
+<meta property="og:title" content="BizCard">
+<meta property="og:description" content="A business card created using the web.">
+<meta property="og:image" content="https://oshinko.github.io/bizcard/img.jpg">
+<title>BizCard</title>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+main {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 91mm;
+  height: 55mm;
+  font-style: normal;
+  color: black;
+  border: 1px solid silver;
+}
+main:after {
+  content : "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: no-repeat center/80% url("bg.png");
+  width: 100%;
+  height: 100%;
+  opacity : 0.2;
+  z-index: -1;
+}
+main.noborder {
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+main * {
+  display: inline;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 3mm;
+}
+main > * > * {
+  position: absolute;
+  display: block;
+}
+main > * > * > * {
+  position: absolute;
+}
+main > * > logo {
+  top: 4mm;
+  left: 8mm;
+  font-family: serif;
+  font-size: 10mm;
+  font-weight: bold;
+}
+main > * > logo > img {
+  width: 8mm;
+  height: 8mm;
+  top: 4mm;
+}
+main > * > info {
+  top: 4mm;
+  right: 2mm;
+  bottom: 4mm;
+  left: 48mm;
+}
+main > front > info {
+  font-family: "游ゴシック体", "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "sans-serif";
+}
+main > back > info {
+  font-family: monospace;
+}
+tel, email, website {
+  font-family: monospace;
+}
+main > * > info > name {
+  top: 4mm;
+  font-size: 5mm;
+  font-weight: bold;
+}
+main > * > info > position {
+  top: 12mm;
+}
+main > * > info > position > * {
+  display: block;
+  text-align: left;
+}
+main > * > info > access {
+  bottom: 0;
+}
+main > * > info > access > * {
+  display: block;
+  text-align: left;
+}
+main > * > info > access > address {
+  line-height: 1.25em;
+}
+main > * > img {
+  top: 36mm;
+  left: 4mm;
+  width: 16mm;
+  height: 16mm;
+}
+button {
+  margin: 1em;
+}
+.github {
+  margin: 1em;
+}
+</style>
+</head>
+<body>
+<main>
+  <front>
+    <logo>浅漬<img src="logo.png"></logo>
+    <info>
+      <name>おしんこ</name>
+      <position>
+        <department>企画開発部</department>
+        <section>プログラマー</section>
+      </position>
+      <access>
+        <corp>浅漬株式会社</corp>
+        <address>
+          〒100-8968<br>
+          東京都千代田区永田町1-6-1
+        </address>
+        <tel>012-3456-7890</tel>
+        <email>osnk@example.com</email>
+        <website>https://www.example.com</website>
+      </access>
+    </info>
+    <img src="qr.png">
+  </front>
+  <back>
+    <logo>浅漬&#x1f54a;</logo>
+    <info>
+      <name>Osnk</name>
+      <position>
+        <section>Programmer</section>
+        <department>Planning & Development</department>
+      </position>
+      <access>
+        <corp>Asazuke Inc.</corp>
+        <address>1-6-1 Nagata-cho, Chiyoda-ku, Tokyo 100-8968, Japan</address>
+        <tel>012-3456-7890</tel>
+        <email>osnk@example.com</email>
+        <website>https://www.example.com</website>
+      </access>
+    </info>
+    <img src="qr.png">
+  </back>
+</main>
+<button>turn</button>
+<label><input type="checkbox" checked>border</label>
+<script>
+var front = document.querySelector('front');
+var back = document.querySelector('back');
+back.style.display = 'none';
+document.querySelector('button').addEventListener('click', () => {
+  let a = document.querySelector('front');
+  let b = document.querySelector('back');
+  let c = a.style.display;
+  a.style.display = b.style.display;
+  b.style.display = c;
+});
+document.querySelector('input').addEventListener('change', function() {
+  if (this.checked) document.querySelector('main').classList.remove('noborder');
+  else document.querySelector('main').classList.add('noborder');
+});
+</script>
+<div class="github">
+  <!-- Place this tag where you want the button to render. -->
+  <a class="github-button" href="https://github.com/oshinko/bizcard" data-icon="octicon-star" aria-label="Star oshinko/bizcard on GitHub">Star</a>
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</div>
+</body>
+</html>
